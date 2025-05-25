@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9fafb;
+  --foreground: #111827;
+  --border: #d1d5db;
+  --accent: #2563eb; /* Tailwind blue-600 */
+  --accent-light: #eff6ff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Global Form Styling */
+input,
+textarea,
+select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--foreground);
+  font-size: 1rem;
+  width: 100%;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #1d4ed8; /* darker blue */
+}
+
+.logout-button {
+  position: relative;
+  top: 0;
+  right: 0;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  background-color: #04a511; /* Dark background */
+  color: #ffffff; /* White text */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #f13607; /* Slightly lighter on hover */
+}
+
+.email-text {
+  position: relative;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  color: #374151;
+  font-size: 14px;
+}

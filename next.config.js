@@ -1,0 +1,14 @@
+module.exports = {
+  experimental: {
+    turbo: false,
+  },
+  env: {
+    DINGTALK_WEBHOOK_URL: process.env.DINGTALK_WEBHOOK_URL,
+    DINGTALK_WEBHOOK_TPK: process.env.DINGTALK_WEBHOOK_TPK,
+    GOOGLE_SERVICE_ACCOUNT_EMAIL: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+    GOOGLE_SHEET_ID: process.env.GOOGLE_SHEET_ID,
+    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+    CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+  },
+};

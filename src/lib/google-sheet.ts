@@ -1,6 +1,4 @@
 import { google } from 'googleapis';
-import path from 'path';
-import { readFileSync } from 'fs';
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 

@@ -4,12 +4,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useRouter } from 'next/navigation';
 import EditForm from '@/components/EditForm';
 import { format } from 'date-fns';
-
-const formatToHHMM = (date: Date | null) =>
-  date ? date.toISOString().slice(11, 16) : '';
 
 type FormData = {
   station: string;
@@ -38,10 +34,8 @@ export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState<'form' | 'edit'>('form');
-  const [userEmail, setUserEmail] = useState<string | null>(null);
   
   useEffect(() => {
     setHasMounted(true);

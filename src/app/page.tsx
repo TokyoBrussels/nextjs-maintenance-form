@@ -277,10 +277,10 @@ export default function Home() {
               className="border p-2 w-full"
             />
           </div>
+          
           </div>
-
           <select
-            {...register("classify")}
+            {...register("classify", { required: true })}
             className="border p-2 w-full"
             onChange={(e) => {
               const value = e.target.value;
@@ -288,9 +288,9 @@ export default function Home() {
               setValue("classify", value);
             }}
           >
-            <option value="">สาเหตุ - MA</option>
-            <option value="Human Error">Operation</option>
-            <option value="System Error">Machine</option>
+            <option value="">เลือกประเภทของสาเหตุ</option>
+            <option value="Operation">Operation</option>
+            <option value="Machine">Machine</option>
             <option value="Other">Other</option>
           </select>
 

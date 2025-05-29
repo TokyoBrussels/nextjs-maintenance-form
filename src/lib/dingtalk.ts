@@ -30,7 +30,7 @@ export async function sendToDingTalk(fields: any, imageUrls: string[]) {
 - **สาเหตุ:** ${fields.rootCause}
 - **การแก้ไข:** ${fields.repairDetail}
 - **เริ่มซ่อม-ซ่อมเสร็จ-กลับมาทำงานปกติ:** ${fields.startTime} - ${fields.endTime} - ${fields.recoverTime}
-- **สาเหตุ - MA:** ${fields.classify}
+- **ประเภทของสาเหตุ:** ${fields.classify}
 \n\n
 ${imageUrls.map((url, i) => `![Image${i + 1}](${url})`).join('\n')}
 \n\n

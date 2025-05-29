@@ -42,6 +42,7 @@ export default function EditForm() {
   const [reportDate, setReportDate] = useState<Date | null>(null);
   const [email, setEmail] = useState('');
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  const [showCustomClassify, setShowCustomClassify] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -232,13 +233,28 @@ export default function EditForm() {
             />
         </div>
         </div>
+        <select
+            {...register("classify", { required: true })}
+            className="border p-2 w-full"
+            onChange={(e) => {
+              const value = e.target.value;
+              setShowCustomClassify(value === "Other");
+              setValue("classify", value);
+            }}
+          >
+            <option value="">เลือกประเภทของสาเหตุ</option>
+            <option value="Operation">Operation</option>
+            <option value="Machine">Machine</option>
+            <option value="Other">Other</option>
+          </select>
 
-      <select {...register('classify')} className="border p-2 w-full">
-        <option value="">สาเหตุ - MA</option>
-        <option value="Human Error">Operation</option>
-        <option value="System Error">Machine</option>
-        <option value="Other">Other</option>
-      </select>
+          {showCustomClassify && (
+            <input
+              placeholder="Enter custom classification"
+              className="border p-2 w-full"
+              {...register("classify", { required: true })}
+            />
+          )}
 
       {/* Image Upload */}
         <div>

@@ -34,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     classify: row[10],
     timestamp: row[11],
     email: row[12],
+    is_damage: row[13],
   }));
 
   res.status(200).json(issues);

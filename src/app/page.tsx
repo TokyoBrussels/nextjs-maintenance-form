@@ -15,6 +15,7 @@ type FormData = {
   issue: string;
   rootCause: string;
   repairDetail: string;
+  is_damage: string;
   startTime: string; 
   endTime: string;
   recoverTime: string;
@@ -36,6 +37,10 @@ export default function Home() {
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState<'form' | 'edit'>('form');
+  const [showCustomDamage, setShowCustomDamage] = useState(false);
+  const [partname, setPartname] = useState('');
+  const [price, setPrice] = useState('');
+  const [damageSelect, setDamageSelect] = useState(""); // For <select>
   
   useEffect(() => {
     setHasMounted(true);
@@ -224,7 +229,49 @@ export default function Home() {
           <input placeholder="ลักษณะปัญหา" {...register("issue", { required: true })} className="border p-2 w-full" />
           <input placeholder="สาเหตุ" {...register("rootCause", { required: true })} className="border p-2 w-full" />
           <input placeholder="การแก้ไข" {...register("repairDetail", { required: true })} className="border p-2 w-full" />
+          <select
+            className="border p-2 w-full"
+            value={damageSelect}
+            onChange={(e) => {
+              const value = e.target.value;
+              setDamageSelect(value);
+              setShowCustomDamage(value === "Yes");
 
+              if (value === "No") {
+                setValue("is_damage", "No"); // Set directly
+              } else {
+                setValue("is_damage", ""); // We'll build the merged string later
+              }
+            }}
+          >
+            <option value="">มีชิ้นส่วนเสียหาย</option>
+            <option value="No">ไม่มี</option>
+            <option value="Yes">มี</option>
+          </select>
+          {showCustomDamage && (
+            <div className="space-y-2">
+              <input
+                placeholder="ชื่อชิ้นส่วน"
+                className="border p-2 w-full"
+                value={partname}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setPartname(val);
+                  setValue("is_damage", `partname: ${val} price: ${price}`);
+                }}
+              />
+              <input
+                placeholder="ราคา"
+                className="border p-2 w-full"
+                value={price}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setPrice(val);
+                  setValue("is_damage", `partname: ${partname} price: ${val}`);
+                }}
+              />
+            </div>
+          )}
           {/* Time Pickers */}
           <div className="grid grid-cols-3 gap-4">
           <div>

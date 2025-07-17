@@ -44,6 +44,7 @@ export async function sendToGoogleSheet(fields: any) {
         String(fields.classify),
         new Date().toISOString(),
         String(fields.email),
+        String(fields.is_damage),
       ]],
     },
   });
